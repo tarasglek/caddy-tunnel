@@ -85,4 +85,3 @@ for arg in sys.argv[2:]:
 with open("Caddyfile", "w") as f:
     f.write(caddyfile)
 subprocess.call(["/usr/bin/caddy", "run"])
-subprocess.call(["/bin/sleep", "infinity"])
