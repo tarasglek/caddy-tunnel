@@ -16,6 +16,9 @@ caddyfile = f"""
 {{
     https_port 4443
     http_port 8880
+  #  acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
+    email taras@glek.net
+    admin off
 }}
 
 (basic-auth) {{
@@ -78,6 +81,9 @@ for arg in sys.argv[2:]:
     config = f"""
         {domain}.{domain_suffix} {{
             import proxy-auth
+            tls {{
+              on_demand
+            }}
             reverse_proxy {backend} {extra.strip()}
 }}"""
     caddyfile += config.strip() + "\n"
