@@ -59,7 +59,7 @@ auth.summit.glek.net {{
     # redirect back to the original site
     redir {{http.request.cookie.myreferer}}
   }}
- 
+  log
   # fallback
   respond "Hi."
 }}
@@ -84,6 +84,7 @@ for arg in sys.argv[2:]:
             tls {{
               on_demand
             }}
+            log
             reverse_proxy {backend} {extra.strip()}
 }}"""
     caddyfile += config.strip() + "\n"
